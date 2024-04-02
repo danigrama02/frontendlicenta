@@ -11,13 +11,14 @@ export class AppComponent implements OnInit{
   constructor (private router : Router){}
 
   ngOnInit(): void {
-      let token = "asd";
-      //token  = localStorage.getItem("token");
-      if (token != null){
+      let token;
+      token  = localStorage.getItem("accessToken");
+      console.log(token);
+      //if (token == null){
         this.router.navigate(['/home']);
-      }
-      else {
-        this.router.navigate(['/login']);
-      }
+      //}
+      //else {
+       // this.router.navigate(['/login']);
+      //}
   }
 }

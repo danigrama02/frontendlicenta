@@ -21,7 +21,7 @@ import { RouterModule } from "@angular/router";
         CreateaccountComponent,
         ProfileComponent,
         MainpageComponent,
-        AppComponent
+        AppComponent,
         
     ],
     imports:[
