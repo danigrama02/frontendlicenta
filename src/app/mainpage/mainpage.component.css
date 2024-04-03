@@ -1,0 +1,50 @@
+.home-container {
+    padding: 0;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 100%;
+    justify-content: center;
+    background-color: cadetblue;
+}
+
+.home-card {
+    width: 98%;
+    height: 97%;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    background-color :lavender;
+}
+
+.maps-card{
+    width: 70%;
+    height: 95%;
+    padding: 1%;
+    margin: 1%;
+    background-color: darkcyan;
+}
+
+.weather-card{
+    width:30%;
+    height: 95%;
+    padding: 1%;
+    margin: 1%;
+    background-color: lightsteelblue;
+}
+
+.weather-list-card{
+    width: 100%;
+    height: 70%;
+    padding: 1%;
+    margin: 1%;
+    background-color: aliceblue;
+}
+
+.weather-alert-card{
+    width: 100%;
+    height: 30%;
+    padding: 1%;
+    margin: 1%;
+    background-color: aliceblue;
+}

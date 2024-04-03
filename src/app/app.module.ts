@@ -12,7 +12,10 @@ import { MainpageComponent } from "./mainpage/mainpage.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialDesignModule } from "./material-design/material-design.module";
 import { RouterModule } from "@angular/router";
-
+import { GoogleMapsModule } from "@angular/google-maps";
+import { MapsComponent } from "./maps/maps.component";
+import { HeaderComponent } from "./header/header.component";
+import { FooterComponent } from "./footer/footer.component";
 
 @NgModule({
     declarations : [
@@ -22,7 +25,9 @@ import { RouterModule } from "@angular/router";
         ProfileComponent,
         MainpageComponent,
         AppComponent,
-        
+        MapsComponent,
+        HeaderComponent,
+        FooterComponent
     ],
     imports:[
         RouterModule,
@@ -31,7 +36,7 @@ import { RouterModule } from "@angular/router";
         HttpClientModule,
         MaterialDesignModule,
         BrowserAnimationsModule,
-        
+        GoogleMapsModule
     ],
     providers :[
 

@@ -5,7 +5,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import { FormsModule } from "@angular/forms";
-import {MatInputModule} from "@angular/material/input"
+import {MatInputModule} from "@angular/material/input";
+import { GoogleMapsModule } from "@angular/google-maps";
 
 @NgModule({
   declarations :[],
