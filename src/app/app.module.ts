@@ -4,18 +4,20 @@ import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
-import { LoginComponent } from "./login/login.component";
-import { HistoryComponent } from "./history/history.component";
-import { CreateaccountComponent } from "./createaccount/createaccount.component";
-import { ProfileComponent } from "./profile/profile.component";
-import { MainpageComponent } from "./mainpage/mainpage.component";
+import { LoginComponent } from "./components/login/login.component";
+import { HistoryComponent } from "./components/history/history.component";
+import { CreateaccountComponent } from "./components/createaccount/createaccount.component";
+import { ProfileComponent } from "./components/profile/profile.component";
+import { MainpageComponent } from "./components/mainpage/mainpage.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MaterialDesignModule } from "./material-design/material-design.module";
+import { MaterialDesignModule } from "./components/material-design/material-design.module";
 import { RouterModule } from "@angular/router";
 import { GoogleMapsModule } from "@angular/google-maps";
-import { MapsComponent } from "./maps/maps.component";
-import { HeaderComponent } from "./header/header.component";
-import { FooterComponent } from "./footer/footer.component";
+import { MapsComponent } from "./components/maps/maps.component";
+import { HeaderComponent } from "./components/header/header.component";
+import { FooterComponent } from "./components/footer/footer.component";
+import { WeatherCardComponent } from "./components/weather-card/weather-card.component";
+import { AlertCardComponent } from "./components/alert-card/alert-card.component";
 
 @NgModule({
     declarations : [
@@ -27,7 +29,9 @@ import { FooterComponent } from "./footer/footer.component";
         AppComponent,
         MapsComponent,
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        WeatherCardComponent,
+        AlertCardComponent
     ],
     imports:[
         RouterModule,

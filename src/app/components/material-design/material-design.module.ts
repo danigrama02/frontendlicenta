@@ -9,6 +9,7 @@ import {MatInputModule} from "@angular/material/input";
 import { GoogleMapsModule } from "@angular/google-maps";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations :[],
@@ -22,7 +23,8 @@ import {MatIconModule} from '@angular/material/icon';
     FormsModule,
     MatInputModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
   ]
 })
 export class MaterialDesignModule {}

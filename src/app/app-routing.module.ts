@@ -1,10 +1,10 @@
 import { Routes, RouterModule, RouterOutlet } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { LoginComponent } from './login/login.component';
-import { MainpageComponent } from './mainpage/mainpage.component';
-import { CreateaccountComponent } from './createaccount/createaccount.component';
-import { HistoryComponent } from './history/history.component';
-import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './components/login/login.component';
+import { MainpageComponent } from './components/mainpage/mainpage.component';
+import { CreateaccountComponent } from './components/createaccount/createaccount.component';
+import { HistoryComponent } from './components/history/history.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { AppComponent } from './app.component';
 
 

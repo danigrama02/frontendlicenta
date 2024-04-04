@@ -12,4 +12,8 @@ export class HeaderComponent {
   goToProfile() : void {
     this.router.navigate(["/profile"]);
   }
+
+  goToHome() : void {
+    this.router.navigate(["/home"])
+  }
 }
