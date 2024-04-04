@@ -1,0 +1,32 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    background-image: url("src\assets\horizon-cloud-sky-sunlight-atmosphere-daytime-493672-pxhere.com.jpg");
+}
+
+.app_logo{
+    background-color: blue;
+    align-self :flex-end;
+    width: 20%;
+}
+
+.profile_icon {
+    align-self: flex-end;
+    width: 20%;
+    align-content: center;
+}
+
+.profile_icon_2{
+    font-size: 30px;
+}
+
+.profile_button{
+    width: 100%;
+}
+
+.app_name{
+    align-content: center;
+    color: aliceblue;
+    font-size: 36px;
+}

@@ -7,6 +7,8 @@ import {MatButtonModule} from "@angular/material/button";
 import { FormsModule } from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import { GoogleMapsModule } from "@angular/google-maps";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations :[],
@@ -18,7 +20,9 @@ import { GoogleMapsModule } from "@angular/google-maps";
     MatCardModule,
     MatButtonModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatToolbarModule,
+    MatIconModule
   ]
 })
 export class MaterialDesignModule {}

@@ -1,1 +1,18 @@
-<p>header works!</p>
+<mat-toolbar class="header" role="toolbar">
+
+    <mat-toolbar-row class="app_logo">
+
+    </mat-toolbar-row>
+
+   <mat-toolbar-row class="header_text">
+        <span class="app_name">Weather on the Road</span>
+    </mat-toolbar-row>
+
+
+    <mat-toolbar-row class="profile_icon">
+        <button mat-raised-button class="profile_button" (click)="goToProfile()">
+            <mat-label>Profile</mat-label>
+            <mat-icon class ="profile_icon_2">supervisor_account</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
