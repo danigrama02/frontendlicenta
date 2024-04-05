@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WeatherService } from '../../services/weather.service';
 
 @Component({
   selector: 'app-mainpage',
@@ -6,10 +7,21 @@ import { Component } from '@angular/core';
   styleUrl: './mainpage.component.css'
 })
 export class MainpageComponent {
-  weatherList : Array<any> = [1,2,3,4,5,7,8,9,10]
-  alertList : Array<any> = [1,2,3,4,5,7,8,9,10]
+  weatherList : Array<any> = [];
+  alertList : Array<any> = [];
   isListLoading = false;
 
-  constructor(){}
+  constructor(private weatherSerice : WeatherService){
+    this.getWeatherList();
+    this.getAlertList();
+  }
+
+  getWeatherList() : void {
+    this.weatherList = this.weatherSerice.getWeatherReport();
+  }
+
+  getAlertList() : void {
+    this.alertList = this.weatherSerice.getAlertReport();
+  }
 
 }

@@ -18,6 +18,8 @@ import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { WeatherCardComponent } from "./components/weather-card/weather-card.component";
 import { AlertCardComponent } from "./components/alert-card/alert-card.component";
+import { LoginService } from "./services/login.service";
+import { WeatherService } from "./services/weather.service";
 
 @NgModule({
     declarations : [
@@ -43,7 +45,7 @@ import { AlertCardComponent } from "./components/alert-card/alert-card.component
         GoogleMapsModule
     ],
     providers :[
-
+        LoginService, WeatherService,
     ],
     bootstrap : [AppComponent]
 

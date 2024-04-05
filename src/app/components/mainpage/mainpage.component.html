@@ -8,7 +8,7 @@
       <mat-card class="weather-card">
         
         <mat-card class="weather-list">
-          <app-weather-card   *ngFor="let key of weatherList; let i = index" class="weather-list-card"></app-weather-card>
+          <app-weather-card   *ngFor="let key of weatherList; let i = index" class="weather-list-card" [weather]="weatherList[i]"></app-weather-card>
 
           <mat-card *ngIf="isListLoading" class="loading-card" >
             <mat-card-content>
@@ -21,7 +21,7 @@
       
       <mat-card class="alert-list" >
 
-          <app-alert-card *ngFor="let key of weatherList; let i = index" class="weather-list-card"></app-alert-card>
+          <app-alert-card *ngFor="let key of alertList; let i = index" class="weather-list-card" [alert]="alertList[i]"></app-alert-card>
         
           <mat-card *ngIf="isListLoading" class="loading-card">
             <mat-card-content>
