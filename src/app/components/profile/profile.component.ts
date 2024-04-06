@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
-
+  profileImage = "assets/userimg.jpg";
+  username = localStorage.getItem("username");
+  
 }

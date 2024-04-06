@@ -1,2 +1,14 @@
 <app-header></app-header>
-<p>profile works!</p>
+<mat-card class="profile_background">
+    <mat-card class="profile">
+        <mat-card class="profile_info">
+            <mat-card class="profile_image">
+                <img md-card-image [src]="(profileImage)" alt="Image">
+            </mat-card>
+            <mat-label class="username_label">{{username}}</mat-label>
+        </mat-card>
+        <mat-card class="history">
+            <app-history></app-history>
+        </mat-card>
+    </mat-card>
+</mat-card>

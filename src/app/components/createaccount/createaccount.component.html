@@ -1,1 +1,29 @@
-<p>createaccount works!</p>
+<div class="login-container">
+    <mat-card class="login-card">
+  
+      <div fxLayout="row" fxLayoutAlign="start start">
+        <img alt="Image">
+      </div>
+  
+    <mat-card-header class="login-text">
+      <mat-card-title>Create account</mat-card-title>
+    </mat-card-header>
+  
+      <mat-card-content>
+        <form (ngSubmit)="onSubmit()">
+          
+          <mat-form-field appearance="fill" class="login-form-field">
+            <mat-label>Username</mat-label>
+            <input [(ngModel)]="username" matInput name = "username" placeholder="Enter your username" required>
+          </mat-form-field>
+          
+          <mat-form-field appearance="fill" class="login-form-field">
+            <mat-label>Password</mat-label>
+            <input [(ngModel)]="password" matInput name = "password" placeholder="Enter your password" required type="password">
+          </mat-form-field>
+          
+          <button type="submit">Create</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>

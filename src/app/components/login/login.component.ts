@@ -8,11 +8,18 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent{
+export class LoginComponent implements OnInit{
   username!: string;
   password!: string;
 
   constructor(private loginService : LoginService, private router : Router) {}
+
+  ngOnInit(): void {
+      let token = localStorage.getItem("accessToken");
+      if (token!==null){
+        this.router.navigate(['/home']).then(()=>{});
+      }
+  }
 
   onSubmit(){
     this.loginService.login(this.username,this.password).subscribe(
@@ -23,6 +30,10 @@ export class LoginComponent{
     
     }
     );
+  }
+
+  goToCreateAccount(){
+    this.router.navigate(['/createaccount'])
   }
   
 }

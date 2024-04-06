@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 export const routes: Routes = [
     { path:'',component: AppComponent},
     { path: 'login', component: LoginComponent },
-    { path:'create-account', component : CreateaccountComponent},
+    { path:'createaccount', component : CreateaccountComponent},
     { path : 'profile', component : ProfileComponent, 
        children : [{path:'history',component : HistoryComponent}]},
     { path:'home', component : MainpageComponent}

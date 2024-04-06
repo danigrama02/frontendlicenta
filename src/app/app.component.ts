@@ -6,19 +6,8 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
   
   constructor (private router : Router){}
 
-  ngOnInit(): void {
-      let token;
-      token  = localStorage.getItem("accessToken");
-      console.log(token);
-      //if (token == null){
-        this.router.navigate(['/home']);
-      //}
-      //else {
-       // this.router.navigate(['/login']);
-      //}
-  }
 }
