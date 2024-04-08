@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
 
-  constructor(public router : Router){}
+  constructor(public router : Router, private loginService : LoginService){}
   goToProfile() : void {
     this.router.navigate(["/profile"]);
   }
@@ -16,4 +17,10 @@ export class HeaderComponent {
   goToHome() : void {
     this.router.navigate(["/home"])
   }
+
+  logout() : void {
+    this.loginService.logout();
+    this.router.navigate(['/login']);
+  }
+
 }

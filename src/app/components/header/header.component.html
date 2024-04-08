@@ -8,6 +8,11 @@
         <span class="app_name">Weather on the Road</span>
     </mat-toolbar-row>
 
+    <mat-toolbar-row class="logout_button" (click)="logout()">
+        <button mat-raised-button>
+            <mat-icon>logout</mat-icon>
+        </button>
+    </mat-toolbar-row>
 
     <mat-toolbar-row class="profile_icon">
         <button mat-raised-button class="profile_button" (click)="goToProfile()">

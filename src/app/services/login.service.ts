@@ -44,12 +44,17 @@ export class LoginService{
                 'Access-Control-Allow-Origin' :'*'
             })
         }
-        
+        console.log(this.BACKEND_API + "logout");
+        localStorage.removeItem('accessToken');
+                console.log("Successful logout");
         this.http.post<any>(this.BACKEND_API + "logout",logoutPayload,httpOptions).pipe(
             tap(response => {
+                console.log(response.string);
                 localStorage.removeItem('accessToken');
+                console.log("Successful logout");
             }),
             catchError(error =>{
+                console.log("pula");
                 return throwError(error);
             })
         )

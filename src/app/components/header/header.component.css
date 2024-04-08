@@ -30,3 +30,8 @@
     color: aliceblue;
     font-size: 36px;
 }
+
+.logout_button{
+    align-self: flex-end;
+    width: 20vh;
+}

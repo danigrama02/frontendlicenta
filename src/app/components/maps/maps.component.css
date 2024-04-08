@@ -1,0 +1,11 @@
+.map-card {
+    display: flex;
+    flex-direction: row;
+    height : 10vh;
+}
+
+.direction-item {
+    height:100%;
+    font-size: 20px;
+    margin-left: 2vh;
+}

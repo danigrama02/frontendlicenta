@@ -1,5 +1,26 @@
 <div class="map-container">
-        <google-map height="85vh" width="130vh">
-          <!-- Add other map elements here -->
+  <mat-card>
+    <mat-card class="map-card">
+      <mat-label class="direction-item">From </mat-label>
+      <mat-form-field class="direction-item">
+        <input matInput #inputStart [placeholder]="startPlaceholder" (startPlaceChanged)="fromValue">
+      </mat-form-field>
+      <mat-label class="direction-item"> To </mat-label>
+      <mat-form-field class="direction-item">
+        <input matInput #inputEnd [placeholder]="endPlaceholder" (endPlaceChanged)="toValue">
+      </mat-form-field>
+      <button mat-raised-button class="direction-item" style="height: 5vh !important;" (click)="getWeather()">Calculate</button>
+     </mat-card>
+        <google-map height="76vh" width="130vh" style="align-self: center;">
+          <map-directions-renderer
+        *ngIf="directionsResult$ | async as directionResults"
+        [directions]="directionResults"
+      ></map-directions-renderer>
+      <map-marker
+        *ngFor="let markerPosition of markerPositions"
+        [position]="markerPosition"
+      >
+      </map-marker>
         </google-map>
+      </mat-card> 
   </div>
