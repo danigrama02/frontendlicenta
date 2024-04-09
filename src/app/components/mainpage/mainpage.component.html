@@ -2,7 +2,23 @@
 <div class="home-container">
   <mat-card class="home-card">
     <mat-card class="maps-card">
-       <app-maps></app-maps> 
+
+      <mat-card class="route-data-card">
+        <mat-label class="direction-item">From </mat-label>
+        <app-autocomplete-card
+            (placeChanged)="fromValue = $event"
+            placeholder="Enter from address..."
+          ></app-autocomplete-card>
+        <mat-label class="direction-item"> To </mat-label>
+        <app-autocomplete-card
+        (placeChanged)="toValue = $event"
+        placeholder="Enter to address..."
+      ></app-autocomplete-card>
+        <button mat-raised-button class="direction-item" style="height: 5vh !important;" (click)="getDataForCurentLocation()">Calculate</button>
+       </mat-card>
+
+       <app-maps [from]="fromValue" [to]="toValue"></app-maps> 
+
       </mat-card>
 
       <mat-card class="weather-card">

@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, NgZone, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, NgZone, Output, ViewChild, viewChild } from '@angular/core';
 import { OnInit,EventEmitter } from '@angular/core';
 import { AutocompletePlace } from '../../models/AutocompletePlace';
 import {MapDirectionsService, GoogleMap, GoogleMapsModule} from '@angular/google-maps';
@@ -10,18 +10,8 @@ import {BehaviorSubject, map} from 'rxjs';
   styleUrl: './maps.component.css'
 })
 export class MapsComponent implements OnInit {
- 
-  @ViewChild("inputStart")
-  inputStart! : ElementRef;
-
-  @ViewChild("inputEnd")
-  inputEnd! : ElementRef;
-
-  @Input() startPlaceholder = "Enter starting adress";
-  @Input() endPlaceholder = "Enter arrival adress";
-
-  @Output() startPlaceChanged = new EventEmitter<AutocompletePlace>();
-  @Output() endPlaceChanged = new EventEmitter<AutocompletePlace>();
+ @ViewChild('map')
+  map!: GoogleMap;
 
   @Input()
   from: AutocompletePlace | undefined;
@@ -29,87 +19,58 @@ export class MapsComponent implements OnInit {
   @Input()
   to: AutocompletePlace | undefined;
 
-  fromValue: AutocompletePlace = { address: '' };
-  toValue: AutocompletePlace = { address: '' };
+  markerPositions: google.maps.LatLng[] = [];
 
-  lat = 21.3069;
-  lng = -157.8583;
-  mapType = 'satellite';
-  autocompleteStart : google.maps.places.Autocomplete | undefined;
-  autocompleteEnd : google.maps.places.Autocomplete | undefined;
-  listenerStart : any;
-  listenerEnd : any;
+  zoom = 5;
 
   directionsResult$ = new BehaviorSubject<
     google.maps.DirectionsResult | undefined
   >(undefined);
 
-  markerPositions: google.maps.LatLng[] = [];
+  lat = 21.3069;
+  lng = -157.8583;
+  mapType = 'satellite';
 
-  constructor(private ngZone : NgZone, private directionsService : MapDirectionsService) { }
+  constructor(private directionsService : MapDirectionsService) { }
 
   ngOnInit(): void {
       
   }
 
-  ngAfterViewInit(): void { 
-    this.autocompleteStart = new google.maps.places.Autocomplete(
-      this.inputStart.nativeElement
-    );
-    this.autocompleteEnd = new google.maps.places.Autocomplete(
-      this.inputEnd.nativeElement
-    );
-
-    this.autocompleteStart.addListener("startPlaceChanged",
-      () =>{
-        this.ngZone.run(
-          () => {
-            const place = this.autocompleteStart?.getPlace();
-            const result : AutocompletePlace = {
-              address: this.inputStart.nativeElement.value,
-              name : place?.name,
-              location : place?.geometry?.location
-            };
-            this.startPlaceChanged.emit(result);
-          }
-        ); 
-      });
-
-      this.autocompleteEnd.addListener("endPlaceChanged",
-      () =>{
-        this.ngZone.run(
-          () => {
-            const place = this.autocompleteEnd?.getPlace();
-            const result : AutocompletePlace = {
-              address: this.inputEnd.nativeElement.value,
-              name : place?.name,
-              location : place?.geometry?.location
-            };
-            this.endPlaceChanged.emit(result);
-          }
-        ); 
-      });
-
-  }
-
-  ngOnDestroy() {
-    if (this.autocompleteStart) {
-      google.maps.event.clearInstanceListeners(this.autocompleteStart);
+  ngOnChanges() : void {
+    const fromLocation = this.from?.location;
+    const toLocation = this.to?.location;
+    if (fromLocation) {
+      this.gotoLocation(fromLocation);
     }
-    if (this.autocompleteEnd) {
-      google.maps.event.clearInstanceListeners(this.autocompleteEnd);
+    if (toLocation) {
+      this.gotoLocation(toLocation);
     }
   }
 
-  getWeather() : void {
-    console.log(this.fromValue.location);console.log(this.toValue.location);
-    this.getDirections(this.from?.location!,this.to?.location!);
+  getDirectionsForCurrentLocations() {
+    console.log('from', this.from);
+    console.log('to', this.to);
+    const fromLocation = this.from?.location;
+    const toLocation = this.to?.location;
+
+    if (fromLocation && toLocation) {
+      this.getDirections(fromLocation, toLocation);
+    }
+  }
+
+  gotoLocation(location: google.maps.LatLng) {
+    this.markerPositions = [location];
+    this.map.panTo(location);
+    this.zoom = 17;
+    this.directionsResult$.next(undefined);
   }
 
   getDirections(
     fromLocation : google.maps.LatLng,
     toLocation : google.maps.LatLng,
   ) : void {
+    console.log('fromLocation', fromLocation);
     const request: google.maps.DirectionsRequest = {
       destination: toLocation,
       origin: fromLocation,

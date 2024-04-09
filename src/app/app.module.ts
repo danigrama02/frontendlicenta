@@ -20,6 +20,7 @@ import { WeatherCardComponent } from "./components/weather-card/weather-card.com
 import { AlertCardComponent } from "./components/alert-card/alert-card.component";
 import { LoginService } from "./services/login.service";
 import { WeatherService } from "./services/weather.service";
+import { AutocompleteCardComponent } from "./autocomplete-card/autocomplete-card.component";
 
 @NgModule({
     declarations : [
@@ -33,7 +34,8 @@ import { WeatherService } from "./services/weather.service";
         HeaderComponent,
         FooterComponent,
         WeatherCardComponent,
-        AlertCardComponent
+        AlertCardComponent,
+        AutocompleteCardComponent
     ],
     imports:[
         RouterModule,

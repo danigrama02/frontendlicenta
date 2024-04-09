@@ -1,6 +1,8 @@
-import { Component , OnInit} from '@angular/core';
+import { Component , OnInit, ViewChild} from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
 import { Router } from '@angular/router';
+import { AutocompletePlace } from '../../models/AutocompletePlace';
+import { MapsComponent } from '../maps/maps.component';
 
 @Component({
   selector: 'app-mainpage',
@@ -8,9 +10,13 @@ import { Router } from '@angular/router';
   styleUrl: './mainpage.component.css'
 })
 export class MainpageComponent implements OnInit{
+  @ViewChild(MapsComponent) mapComponent!: MapsComponent;
   weatherList : Array<any> = [];
   alertList : Array<any> = [];
   isListLoading = false;
+
+  fromValue: AutocompletePlace = { address: '' };
+  toValue: AutocompletePlace = { address: '' };
 
   constructor(private weatherSerice : WeatherService, private router : Router){
     this.getWeatherList();
@@ -27,6 +33,10 @@ export class MainpageComponent implements OnInit{
     else {
       this.router.navigate(['/login']).then(()=>{});
     }
+  }
+
+  getDataForCurentLocation() : void {
+    this.mapComponent.getDirectionsForCurrentLocations();
   }
 
   getWeatherList() : void {

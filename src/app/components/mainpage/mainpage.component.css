@@ -66,3 +66,8 @@
     border: 0;
     border-radius: 0;
 }
+
+.route-data-card {
+    display: flex;
+    flex-direction: row;
+}
