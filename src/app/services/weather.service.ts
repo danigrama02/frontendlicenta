@@ -10,7 +10,7 @@ import { Alert } from "../models/Alert";
 export class WeatherService{
     constructor(private httpClient : HttpClient){}
 
-    getWeatherReport() : any {
+    getWeatherReport(markers : google.maps.LatLng[]) : any {
         var w1 = <Weather>{};
         w1.precipitaion = "1";
         w1.pressure = "1";
@@ -20,7 +20,7 @@ export class WeatherService{
         return [w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1];
     }
 
-    getAlertReport() : any {
+    getAlertReport(markers : google.maps.LatLng[]) : any {
         var a1 = <Alert>{}
         a1.alertId = "1";
         a1.alertImage = "1";

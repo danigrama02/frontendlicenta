@@ -15,7 +15,6 @@ import { RouterModule } from "@angular/router";
 import { GoogleMapsModule } from "@angular/google-maps";
 import { MapsComponent } from "./components/maps/maps.component";
 import { HeaderComponent } from "./components/header/header.component";
-import { FooterComponent } from "./components/footer/footer.component";
 import { WeatherCardComponent } from "./components/weather-card/weather-card.component";
 import { AlertCardComponent } from "./components/alert-card/alert-card.component";
 import { LoginService } from "./services/login.service";
@@ -32,7 +31,6 @@ import { AutocompleteCardComponent } from "./autocomplete-card/autocomplete-card
         AppComponent,
         MapsComponent,
         HeaderComponent,
-        FooterComponent,
         WeatherCardComponent,
         AlertCardComponent,
         AutocompleteCardComponent

@@ -48,7 +48,7 @@ export class MapsComponent implements OnInit {
     }
   }
 
-  getDirectionsForCurrentLocations() {
+  getDirectionsForCurrentLocations() : google.maps.LatLng[] {
     console.log('from', this.from);
     console.log('to', this.to);
     const fromLocation = this.from?.location;
@@ -57,6 +57,7 @@ export class MapsComponent implements OnInit {
     if (fromLocation && toLocation) {
       this.getDirections(fromLocation, toLocation);
     }
+    return this.markerPositions;
   }
 
   gotoLocation(location: google.maps.LatLng) {
@@ -83,7 +84,28 @@ export class MapsComponent implements OnInit {
       .subscribe((res) => {
         this.directionsResult$.next(res);
         this.markerPositions = [];
-      });
+  
+        let totalDistance = 0;
 
+        const markerDistance = 100000; 
+        if (res && res.routes && res.routes.length > 0) {
+          const path = res.routes[0].overview_path;
+        
+        for (let i = 0; i < path.length - 1; i++) {
+          
+          const distance = google.maps.geometry.spherical.computeDistanceBetween(path[i], path[i + 1]);
+
+          totalDistance += distance;
+  
+          while (totalDistance >= markerDistance) {
+            const fraction = (markerDistance / totalDistance);
+            const markerPosition = google.maps.geometry.spherical.interpolate(path[i], path[i + 1], fraction);
+            this.markerPositions.push(markerPosition);
+            totalDistance -= markerDistance;
+          }
+        }
+      }
+      });
+      console.log(this.markerPositions.length);
     }
   }

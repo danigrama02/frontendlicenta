@@ -18,9 +18,9 @@ export class MainpageComponent implements OnInit{
   fromValue: AutocompletePlace = { address: '' };
   toValue: AutocompletePlace = { address: '' };
 
+  markers : google.maps.LatLng[] = [];
+
   constructor(private weatherSerice : WeatherService, private router : Router){
-    this.getWeatherList();
-    this.getAlertList();
   }
 
   ngOnInit() : void {
@@ -36,15 +36,17 @@ export class MainpageComponent implements OnInit{
   }
 
   getDataForCurentLocation() : void {
-    this.mapComponent.getDirectionsForCurrentLocations();
+    this.markers = this.mapComponent.getDirectionsForCurrentLocations();
+    this.getWeatherList();
+    this.getAlertList();
   }
 
   getWeatherList() : void {
-    this.weatherList = this.weatherSerice.getWeatherReport();
+    this.weatherList = this.weatherSerice.getWeatherReport(this.markers);
   }
 
   getAlertList() : void {
-    this.alertList = this.weatherSerice.getAlertReport();
+    this.alertList = this.weatherSerice.getAlertReport(this.markers);
   }
 
 }
