@@ -8,23 +8,31 @@ import { Alert } from "../models/Alert";
     providedIn : 'root'
 })
 export class WeatherService{
+
+    BACKEND_API : string = "http://localhost:8080/api/v1/weather/" ;
+
     constructor(private httpClient : HttpClient){}
 
-    getWeatherReport(markers : google.maps.LatLng[]) : any {
-        var w1 = <Weather>{};
-        w1.precipitaion = "1";
-        w1.pressure = "1";
-        w1.temperature ="1";
-        w1.weatherImg = "1";
-        w1.weatherId = "1";
-        return [w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1,w1];
+    getWeatherReport(markers : google.maps.LatLng[]) : Observable<any> {
+        
+        const requestJsonBody = JSON.stringify(markers);
+
+        return this.httpClient.post<any>(this.BACKEND_API + "forecast",requestJsonBody,
+        {headers : new HttpHeaders({
+            'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': 'Bearer '+localStorage.getItem("accessToken")!.toString()})
+        });
     }
 
-    getAlertReport(markers : google.maps.LatLng[]) : any {
-        var a1 = <Alert>{}
-        a1.alertId = "1";
-        a1.alertImage = "1";
-        a1.alertText = "1";
-        return [a1,a1,a1,a1,a1,a1,a1,a1];
+    getAlertReport(markers : google.maps.LatLng[]) : Observable<any> {
+        const requestJsonBody = JSON.stringify(markers);
+
+        return this.httpClient.post<any>(this.BACKEND_API + "alerts",requestJsonBody,
+        {headers : new HttpHeaders({
+            'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': 'Bearer '+localStorage.getItem("accessToken")!.toString()})
+        });
     }
 }

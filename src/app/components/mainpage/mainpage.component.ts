@@ -3,7 +3,8 @@ import { WeatherService } from '../../services/weather.service';
 import { Router } from '@angular/router';
 import { AutocompletePlace } from '../../models/AutocompletePlace';
 import { MapsComponent } from '../maps/maps.component';
-
+import { Subscription } from 'rxjs';
+import { Weather } from '../../models/Weather';
 @Component({
   selector: 'app-mainpage',
   templateUrl: './mainpage.component.html',
@@ -11,7 +12,7 @@ import { MapsComponent } from '../maps/maps.component';
 })
 export class MainpageComponent implements OnInit{
   @ViewChild(MapsComponent) mapComponent!: MapsComponent;
-  weatherList : Array<any> = [];
+  weatherList : Array<Weather> = [];
   alertList : Array<any> = [];
   isListLoading = false;
 
@@ -42,11 +43,44 @@ export class MainpageComponent implements OnInit{
   }
 
   getWeatherList() : void {
-    this.weatherList = this.weatherSerice.getWeatherReport(this.markers);
+    this.weatherList = [];
+    console.log(this.weatherList.length);
+    console.log("start printing ");
+    this.weatherSerice.getWeatherReport(this.markers).subscribe({
+      next : data =>
+        {
+          console.log(data);
+          for (const key in data) {
+            console.log(data[key]);
+            this.weatherList.push(data[key]);
+          }
+        },
+        error : error =>{
+          console.log(error);
+        },
+        complete : () =>{
+          this.isListLoading = false;
+        }
+  });
   }
 
   getAlertList() : void {
-    this.alertList = this.weatherSerice.getAlertReport(this.markers);
+    this.alertList = [];
+    this.weatherSerice.getAlertReport(this.markers).subscribe({
+      next : data => {
+        console.log(data);
+        for (const key in data) {
+          console.log(data[key]);
+          this.alertList.push(data[key]);
+        }
+      },
+      error : error => {
+        console.log(error);
+      },
+      complete : () => {
+        this.isListLoading = false;
+      }
+    });
   }
 
 }
