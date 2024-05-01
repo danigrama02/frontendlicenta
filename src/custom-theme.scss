@@ -1,0 +1,19 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+//Pallets used
+
+$LicentaFrontEnd-primary: mat.define-palette(mat.$light-blue-palette, 200, 100, 400);
+$LicentaFrontEnd-accent: mat.define-palette(mat.$pink-palette, 400);
+
+$LicentaFrontEnd-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $LicentaFrontEnd-primary,
+      accent: $LicentaFrontEnd-accent
+    )
+  )
+);
+
+@include mat.all-component-themes($LicentaFrontEnd-theme);

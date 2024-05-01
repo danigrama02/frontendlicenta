@@ -15,20 +15,8 @@ export class WeatherService{
 
     getWeatherReport(markers : google.maps.LatLng[]) : Observable<any> {
         
-        const requestJsonBody = JSON.stringify(markers);
-
+        let requestJsonBody = JSON.stringify(markers);
         return this.httpClient.post<any>(this.BACKEND_API + "forecast",requestJsonBody,
-        {headers : new HttpHeaders({
-            'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Authorization': 'Bearer '+localStorage.getItem("accessToken")!.toString()})
-        });
-    }
-
-    getAlertReport(markers : google.maps.LatLng[]) : Observable<any> {
-        const requestJsonBody = JSON.stringify(markers);
-
-        return this.httpClient.post<any>(this.BACKEND_API + "alerts",requestJsonBody,
         {headers : new HttpHeaders({
             'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',

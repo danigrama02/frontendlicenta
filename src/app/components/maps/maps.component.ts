@@ -48,7 +48,7 @@ export class MapsComponent implements OnInit {
     }
   }
 
-  getDirectionsForCurrentLocations() : google.maps.LatLng[] {
+  public getDirectionsForCurrentLocations() : google.maps.LatLng[] {
     console.log('from', this.from);
     console.log('to', this.to);
     const fromLocation = this.from?.location;
@@ -65,6 +65,10 @@ export class MapsComponent implements OnInit {
     this.map.panTo(location);
     this.zoom = 17;
     this.directionsResult$.next(undefined);
+  }
+
+  public getMarkers() : google.maps.LatLng[] {
+    return this.markerPositions
   }
 
   getDirections(
@@ -100,12 +104,18 @@ export class MapsComponent implements OnInit {
           while (totalDistance >= markerDistance) {
             const fraction = (markerDistance / totalDistance);
             const markerPosition = google.maps.geometry.spherical.interpolate(path[i], path[i + 1], fraction);
-            this.markerPositions.push(markerPosition);
+            console.log("pozitia marcatorului")
+            console.log(markerPosition);
+            this.markerPositions.push();
+            let m : google.maps.LatLng = new google.maps.LatLng(markerPosition.lat(), markerPosition.lng());
+            this.markerPositions.push(m);
             totalDistance -= markerDistance;
           }
         }
-      }
+      } 
+      console.log("cati markeri is pe harta ")
+      console.log(this.markerPositions);
       });
-      console.log(this.markerPositions.length);
+     
     }
   }

@@ -1,30 +1,34 @@
 <app-header></app-header>
 <div class="home-container">
+  
   <mat-card class="home-card">
+
     <mat-card class="maps-card">
 
       <mat-card class="route-data-card">
-        <mat-label class="direction-item">From </mat-label>
-        <app-autocomplete-card
+        <app-autocomplete-card class="direction-item"
             (placeChanged)="fromValue = $event"
-            placeholder="Enter from address..."
+            placeholder="Enter start location..."
           ></app-autocomplete-card>
-        <mat-label class="direction-item"> To </mat-label>
-        <app-autocomplete-card
+        <app-autocomplete-card class="direction-item"
         (placeChanged)="toValue = $event"
-        placeholder="Enter to address..."
+        placeholder="Enter destination location..."
       ></app-autocomplete-card>
-        <button mat-raised-button class="direction-item" style="height: 5vh !important;" (click)="getDataForCurentLocation()">Calculate</button>
+        <button mat-raised-button class="direction-item-button" style="height: 5vh !important;" (click)="getDataForCurentLocation()">Calculate route</button>
+        <button mat-raised-button class="direction-item-button" style="height: 5vh !important;" (click)="getWeatherList()">Calculate weather</button>
        </mat-card>
 
+       <mat-card >
        <app-maps [from]="fromValue" [to]="toValue"></app-maps> 
-
+</mat-card>
       </mat-card>
 
       <mat-card class="weather-card">
         
         <mat-card class="weather-list">
           <app-weather-card   *ngFor="let key of weatherList; let i = index" class="weather-list-card" [weather]="weatherList[i]"></app-weather-card>
+            <mat-card *ngIf="!weatherList.length" class="empty-list-card" style="align-self: center; margin-top : 50%;">There is no weather to show.</mat-card>
+          
 
           <mat-card *ngIf="isListLoading" class="loading-card" >
             <mat-card-content>
@@ -38,6 +42,8 @@
       <mat-card class="alert-list" >
 
           <app-alert-card *ngFor="let key of alertList; let i = index" class="weather-list-card" [alert]="alertList[i]"></app-alert-card>
+            <mat-card *ngIf="!alertList.length" class="empty-list-card" style="align-self: center; margin-top : 20%;">There is no alert to show.</mat-card>
+          
         
           <mat-card *ngIf="isListLoading" class="loading-card">
             <mat-card-content>

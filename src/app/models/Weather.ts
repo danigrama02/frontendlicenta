@@ -1,8 +1,6 @@
 export interface Weather{
-    weatherId : String;
-    timestamp : String;
+    orderNr : Number;
     temperature: String;
     precipitaion : String;
-    pressure : String;
     weatherImg : String;
 }

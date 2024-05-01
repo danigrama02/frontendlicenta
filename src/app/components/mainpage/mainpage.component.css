@@ -4,7 +4,7 @@
     box-sizing: border-box;
     min-height: 100%;
     justify-content: center;
-    background-color: cadetblue;
+    background-color: #032539;
 }
 
 .home-card {
@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: row;
     position: absolute;
-    background-color :lavender;
+    background-color: #032539;
 }
 
 .maps-card{
@@ -22,7 +22,7 @@
     height: 95%;
     padding: 1%;
     margin: 1%;
-    background-color: darkcyan;
+    background-color: #1C768F;
 }
 
 .weather-card{
@@ -30,11 +30,12 @@
     height: 95%;
     padding: 1%;
     margin: 1%;
-    background-color: lightsteelblue;
+    background-color: #1C768F;
 }
 
 .weather-list-card{
-    padding: 1%;
+    padding: 1%; 
+   
 }
 
 .weather-list{
@@ -42,14 +43,17 @@
     height: 70%;
     padding: 1%;
     margin: 1%;
-    background-color: aliceblue;
     overflow : scroll;
+    background-color: #FBF3F2;
 }
 
 .alert-list{
     overflow: scroll;
     height: 30%;
+    padding: 1%;
+    margin: 1%;
     width: 100%;
+    background-color: #FBF3F2;
 }
 
 .map{
@@ -68,6 +72,25 @@
 }
 
 .route-data-card {
+    margin-bottom: 1%;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    height: 10vh;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    border-color: transparent;
+    box-shadow: 0 0 0 0;
+    background-color: transparent;
+}
+
+.direction-item{
+  margin-left: 2%;
+  align-self: center;
+}
+
+.direction-item-button{
+    margin-left: 2%;
+    margin-top: 1%;
 }
