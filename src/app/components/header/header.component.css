@@ -6,10 +6,10 @@
 }
 
 .app_logo{
-    background-image: url("src\assets\logo.png");
+    /* background-image: url("src\assets\logo.png"); */
     align-self :flex-end;
     width: 55vh;
-    margin-left: 2%;
+    margin-left: 2%
 }
 
 .profile_icon {

@@ -13,9 +13,13 @@ export class WeatherService{
 
     constructor(private httpClient : HttpClient){}
 
-    getWeatherReport(markers : google.maps.LatLng[]) : Observable<any> {
+    getWeatherReport(markers : google.maps.LatLng[], fromLocation : string, toLocation : string) : Observable<any> {
         
-        let requestJsonBody = JSON.stringify(markers);
+        const locations = JSON.stringify(markers);
+        const username = localStorage.getItem("username")!;
+        const WeatherRequest = {locations,fromLocation,toLocation,username};
+        const requestJsonBody = JSON.stringify(WeatherRequest);
+        console.log(requestJsonBody);
         return this.httpClient.post<any>(this.BACKEND_API + "forecast",requestJsonBody,
         {headers : new HttpHeaders({
             'Content-Type': 'application/json',

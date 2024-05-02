@@ -7,8 +7,15 @@
             </mat-card>
             <mat-label class="username_label">{{username}}</mat-label>
         </mat-card>
-        <mat-card class="history">
-            <app-history></app-history>
+        <mat-card class="history-list">
+            <app-history-card *ngFor="let key of historyList; let i = index" class="history-list-card" [history]="historyList[i]"></app-history-card>
+            <mat-card *ngIf="!historyList.length && !isListLoading" class="empty-list-card" style="align-self: center; margin-top : 50%;">There is no history to show.</mat-card>
+            <mat-card *ngIf="isListLoading" class="loading-card" >
+                <mat-card-content>
+                  <mat-spinner></mat-spinner>
+                </mat-card-content>
+              </mat-card>
         </mat-card>
+        
     </mat-card>
 </mat-card>

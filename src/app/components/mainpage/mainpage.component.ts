@@ -55,7 +55,7 @@ export class MainpageComponent implements OnInit{
     console.log("markeri pe harta")
     console.log(this.markers);
     this.markers.forEach(element => {console.log(element);console.log("pula")});
-    this.weatherSerice.getWeatherReport(this.markers).subscribe({
+    this.weatherSerice.getWeatherReport(this.markers,this.fromValue.name!,this.toValue.name!).subscribe({
       next : data =>
         {
           console.log(data);

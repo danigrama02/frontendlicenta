@@ -20,6 +20,8 @@ import { AlertCardComponent } from "./components/alert-card/alert-card.component
 import { LoginService } from "./services/login.service";
 import { WeatherService } from "./services/weather.service";
 import { AutocompleteCardComponent } from "./autocomplete-card/autocomplete-card.component";
+import { HistoryCardComponent } from "./components/history-card/history-card.component";
+import { HistoryService } from "./services/history.service";
 
 @NgModule({
     declarations : [
@@ -33,7 +35,8 @@ import { AutocompleteCardComponent } from "./autocomplete-card/autocomplete-card
         HeaderComponent,
         WeatherCardComponent,
         AlertCardComponent,
-        AutocompleteCardComponent
+        AutocompleteCardComponent,
+        HistoryCardComponent
     ],
     imports:[
         RouterModule,
@@ -45,7 +48,7 @@ import { AutocompleteCardComponent } from "./autocomplete-card/autocomplete-card
         GoogleMapsModule
     ],
     providers :[
-        LoginService, WeatherService,
+        LoginService, WeatherService,HistoryService
     ],
     bootstrap : [AppComponent]
 

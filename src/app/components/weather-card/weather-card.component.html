@@ -1,5 +1,8 @@
 <mat-card class="weather-card">
-    <mat-label class="weather-text-temperature">{{weather!.temperature}}</mat-label>
-    <mat-label class="weather-text-pressure">{{weather!.precipitaion}}</mat-label>
-    <img md-card-image [src]="" alt="Image" class="weather-image">
+    <mat-label class="weather-text-temperature">{{weather!.temperature}} °C </mat-label>
+    <mat-label class="weather-text-precipitation">{{weather!.precipitaion}} mm </mat-label>
+    <img md-card-image *ngIf="weather?.weatherImage==sun" [src]="(sun_src)" alt="Image" class="weather-image">
+    <img md-card-image *ngIf=" weather?.weatherImage === 'rain' " [src]="(rain_src)" alt="Image" class="weather-image">
+    <img md-card-image *ngIf=" weather?.weatherImage === 'snow' " [src]="(snow_src)" alt="Image" class="weather-image">
+    <img md-card-image *ngIf=" weather?.weatherImage === 'cloudy' " [src]="(cloudy_src)" alt="Image" class="weather-image">
     </mat-card>
